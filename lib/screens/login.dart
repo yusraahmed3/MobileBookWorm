@@ -1,8 +1,10 @@
-import 'dart:ffi';
-
+import 'package:book_worm/misc/colors.dart';
+import 'package:book_worm/widgets/input_fields.dart';
+import 'package:book_worm/widgets/large_text.dart';
+import 'package:book_worm/widgets/main_button.dart';
+import 'package:book_worm/widgets/normal_text.dart';
 import 'package:flutter/material.dart';
 import 'package:book_worm/screens/signup.dart';
-import 'package:book_worm/screens/homepage.dart';
 
 class SignIn extends StatelessWidget {
   @override
@@ -22,107 +24,56 @@ class SignIn extends StatelessWidget {
       ),
       body: Container(
           height: MediaQuery.of(context).size.height,
-          width: double.infinity,
+          width: double.maxFinite,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Column(
                 children: [
-                  Text(
-                    "Login",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                    ),
+                  LargeText(
+                    text: "Login",
+                    size: 30,
                   ),
                   SizedBox(
                     height: 15,
                   ),
-                  Text(
-                    "Login to your account",
-                    style: TextStyle(fontSize: 15, color: Colors.grey[700]),
-                  )
+                  NormalText(text: "Login to your account"),
                 ],
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40),
                 child: Column(children: [
                   InputFields(label: 'Email'),
-                  InputFields(label: 'Password', obscureText: true)
+                  InputFields(
+                    label: 'Password',
+                    obscureText: true,
+                  )
                 ]),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: Container(
-                  padding: EdgeInsets.only(top: 2, left: 2),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black),
-                      borderRadius: BorderRadius.circular(50)),
-                  child: MaterialButton(
-                    color: Color(0xff6c757d),
-                    elevation: 0,
-                    minWidth: double.infinity,
-                    onPressed: () => Navigator.pushNamed(context, '/home'),
-                    height: 60,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)),
-                    child: Text(
-                      'Login',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
+              MainAppButton(
+                backColor: AppColors.secColor,
+                text: "Login",
+                textColor: AppColors.white,
+                borderColor: AppColors.secColor,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Don't have an account?",
-                    style: TextStyle(fontSize: 16),
-                  ),
+                  NormalText(text: "Don't have an account?"),
                   SizedBox(
                     width: 5,
                   ),
                   InkWell(
-                    onTap: () => Navigator.push(context,
-                        MaterialPageRoute(builder: ((context) => SignUp()))),
-                    child: Text(
-                      "Register ",
-                      style: TextStyle(color: Colors.blue[200], fontSize: 16),
-                    ),
-                  )
+                      onTap: () => Navigator.push(context,
+                          MaterialPageRoute(builder: ((context) => SignUp()))),
+                      child: NormalText(
+                        text: "Register",
+                        textColor: Colors.blue,
+                      ))
                 ],
               )
             ],
           )),
     );
   }
-}
-
-Widget InputFields({label, obscureText = false}) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(label,
-          style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-              color: Colors.black87)),
-      SizedBox(
-        height: 5,
-      ),
-      TextField(
-        obscureText: obscureText,
-        decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-            enabledBorder:
-                OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-            border:
-                OutlineInputBorder(borderSide: BorderSide(color: Colors.grey))),
-      ),
-      SizedBox(
-        height: 30,
-      )
-    ],
-  );
 }

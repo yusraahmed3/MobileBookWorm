@@ -1,7 +1,11 @@
 import 'dart:ffi';
 
+import 'package:book_worm/misc/colors.dart';
 import 'package:book_worm/screens/login.dart';
 import 'package:book_worm/screens/signup.dart';
+import 'package:book_worm/widgets/large_text.dart';
+import 'package:book_worm/widgets/main_button.dart';
+import 'package:book_worm/widgets/normal_text.dart';
 import 'package:flutter/material.dart';
 
 class FirstPage extends StatelessWidget {
@@ -17,21 +21,15 @@ class FirstPage extends StatelessWidget {
             width: double.infinity,
             height: MediaQuery.of(context).size.height,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Column(children: [
-                  Text(
-                    "Welcome",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                  ),
+                  LargeText(text: "Welcome"),
                   SizedBox(
                     height: 15,
                   ),
-                  Text(
-                    "Read any book right here for free!",
-                    style: TextStyle(color: Colors.grey[700], fontSize: 15),
-                  ),
+                  NormalText(text: "Read any book right here for free!"),
                 ]),
                 Container(
                   height: MediaQuery.of(context).size.height / 3,
@@ -39,42 +37,16 @@ class FirstPage extends StatelessWidget {
                       image: DecorationImage(
                           image: AssetImage('assets/images/BookWorm.png'))),
                 ),
-                Column(
-                  children: [
-                    MaterialButton(
-                      minWidth: double.infinity,
-                      onPressed: () => Navigator.pushNamed(context, '/login'),
-                      height: 60,
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Text('Login'),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(top: 2, left: 2),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.circular(50)),
-                      child: MaterialButton(
-                        color: Color(0xffcb997e),
-                        elevation: 0,
-                        minWidth: double.infinity,
-                        onPressed: () =>
-                            Navigator.pushNamed(context, '/signup'),
-                        height: 60,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50)),
-                        child: Text(
-                          'Register',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ],
-                )
+                MainAppButton(
+                    text: "Login",
+                    textColor: AppColors.textColor,
+                    backColor: AppColors.white,
+                    borderColor: AppColors.secColor),
+                MainAppButton(
+                    text: "Register",
+                    textColor: AppColors.white,
+                    backColor: AppColors.mainColor,
+                    borderColor: AppColors.mainColor)
               ],
             )),
       ),

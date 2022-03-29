@@ -37,16 +37,24 @@ class FirstPage extends StatelessWidget {
                       image: DecorationImage(
                           image: AssetImage('assets/images/BookWorm.png'))),
                 ),
-                MainAppButton(
-                    text: "Login",
-                    textColor: AppColors.textColor,
-                    backColor: AppColors.white,
-                    borderColor: AppColors.secColor),
-                MainAppButton(
-                    text: "Register",
-                    textColor: AppColors.white,
-                    backColor: AppColors.mainColor,
-                    borderColor: AppColors.mainColor)
+                InkWell(
+                  onTap: (() => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignIn()))),
+                  child: MainAppButton(
+                      text: "Login",
+                      textColor: AppColors.textColor,
+                      backColor: AppColors.white,
+                      borderColor: AppColors.secColor),
+                ),
+                InkWell(
+                  onTap: (() => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUp()))),
+                  child: MainAppButton(
+                      text: "Register",
+                      textColor: AppColors.white,
+                      backColor: AppColors.mainColor,
+                      borderColor: AppColors.mainColor),
+                )
               ],
             )),
       ),

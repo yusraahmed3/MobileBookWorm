@@ -1,4 +1,5 @@
 import 'package:book_worm/misc/colors.dart';
+import 'package:book_worm/screens/homepage.dart';
 import 'package:book_worm/widgets/input_fields.dart';
 import 'package:book_worm/widgets/large_text.dart';
 import 'package:book_worm/widgets/main_button.dart';
@@ -50,11 +51,15 @@ class SignIn extends StatelessWidget {
                   )
                 ]),
               ),
-              MainAppButton(
-                backColor: AppColors.secColor,
-                text: "Login",
-                textColor: AppColors.white,
-                borderColor: AppColors.secColor,
+              InkWell(
+                onTap: (() => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomePage()))),
+                child: MainAppButton(
+                  backColor: AppColors.secColor,
+                  text: "Login",
+                  textColor: AppColors.white,
+                  borderColor: AppColors.secColor,
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -66,9 +71,13 @@ class SignIn extends StatelessWidget {
                   InkWell(
                       onTap: () => Navigator.push(context,
                           MaterialPageRoute(builder: ((context) => SignUp()))),
-                      child: NormalText(
-                        text: "Register",
-                        textColor: Colors.blue,
+                      child: InkWell(
+                        onTap: (() => Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => SignUp()))),
+                        child: NormalText(
+                          text: "Register",
+                          textColor: Colors.blue,
+                        ),
                       ))
                 ],
               )

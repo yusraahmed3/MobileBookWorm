@@ -18,16 +18,13 @@ class MainAppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 310,
+      height: 60,
       decoration: BoxDecoration(
+          color: backColor,
           border: Border.all(color: borderColor),
           borderRadius: BorderRadius.circular(50)),
-      child: MaterialButton(
-        color: backColor,
-        elevation: 0,
-        minWidth: 310,
-        onPressed: () => {},
-        height: 60,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+      child: Center(
         child: Text(
           text,
           style: TextStyle(color: textColor),
